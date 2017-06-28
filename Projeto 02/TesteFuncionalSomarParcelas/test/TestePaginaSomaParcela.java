@@ -33,7 +33,7 @@ public class TestePaginaSomaParcela {
     }
 
     @Test
-    public void testE2() throws Exception {
+    public void test1() throws Exception {
         driver.get(baseUrl + "/SomarParcelas/");
         driver.findElement(By.name("p1")).clear();
         driver.findElement(By.name("p1")).sendKeys("12");
@@ -41,6 +41,17 @@ public class TestePaginaSomaParcela {
         driver.findElement(By.name("p2")).sendKeys("33");
         driver.findElement(By.name("Calcular")).click();
         assertEquals("O resultado da soma é: 45", driver.findElement(By.cssSelector("h1")).getText());
+    }
+    
+    @Test
+    public void test2() throws Exception {
+        driver.get(baseUrl + "/SomarParcelas/");
+        driver.findElement(By.name("p1")).clear();
+        driver.findElement(By.name("p1")).sendKeys("10");
+        driver.findElement(By.name("p2")).clear();
+        driver.findElement(By.name("p2")).sendKeys("10");
+        driver.findElement(By.name("Calcular")).click();
+        assertEquals("O resultado da soma é: 20", driver.findElement(By.cssSelector("h1")).getText());
     }
 
     @After
