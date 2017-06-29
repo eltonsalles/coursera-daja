@@ -2,8 +2,9 @@ package com.example.tests;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
-import org.testng.annotations.*;
-import static org.testng.Assert.*;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -14,7 +15,7 @@ public class CelsiusParaFahrenheit {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
-  @BeforeClass(alwaysRun = true)
+  @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "http://localhost:8080/";
@@ -28,10 +29,10 @@ public class CelsiusParaFahrenheit {
     driver.findElement(By.name("valor")).clear();
     driver.findElement(By.name("valor")).sendKeys("100");
     driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
-    assertEquals(driver.findElement(By.cssSelector("h1")).getText(), "O resultado da conversão foi: 212");
+    assertEquals("O resultado da conversão foi: 212", driver.findElement(By.cssSelector("h1")).getText());
   }
 
-  @AfterClass(alwaysRun = true)
+  @After
   public void tearDown() throws Exception {
     driver.quit();
     String verificationErrorString = verificationErrors.toString();
