@@ -31,6 +31,7 @@ public class Pessoa {
         this.sobrenome = sobrenome;
     }
 
+    @IgnorarNaComparacao
     public int getIdade() {
         return idade;
     }
