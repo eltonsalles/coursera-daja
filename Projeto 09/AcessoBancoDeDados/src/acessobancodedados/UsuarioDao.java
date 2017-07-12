@@ -24,7 +24,7 @@ public class UsuarioDao {
     public static List<UsuarioModel> todosUsuarios() {
         List<UsuarioModel> todos = new ArrayList<>();
         
-        try (Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/usuarios", "root", "root123")) {
+        try (Connection c = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/usuarios", "root", "root")) {
             
             String sql = "select login, nome, email from usuario";
             PreparedStatement stmt = c.prepareStatement(sql);
