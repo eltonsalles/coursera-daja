@@ -4,6 +4,7 @@ import gamification.model.Usuario;
 import gamification.utils.Conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -34,6 +35,12 @@ public class UsuarioDao {
         }
     }
     
+    /**
+     * Adiciona pontos ao usuário
+     * 
+     * @param login
+     * @param pontos 
+     */
     public static void adicionarPontos(String login, int pontos) {
         try (Connection c = Conn.getConnection()) {
             String sql = "UPDATE usuario SET pontos = pontos + ? WHERE login = ?";
@@ -46,5 +53,35 @@ public class UsuarioDao {
         } catch (Exception e) {
             throw new RuntimeException("Não foi possível adicionar pontos ao usuário.", e);
         }
+    }
+    
+    /**
+     * Obtém o usuário pelo login
+     * 
+     * @param login
+     * @return 
+     */
+    public static Usuario obterUsuario(String login) {
+        try (Connection c = Conn.getConnection()) {
+            String sql = "select * from usuario where login = ?";
+
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setString(1, login);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Usuario usuario = new Usuario(
+                        rs.getString("login"), 
+                        rs.getString("email"), 
+                        rs.getString("nome"), 
+                        rs.getInt("pontos"));
+                
+                return usuario;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Não foi possível adicionar pontos ao usuário.", e);
+        }
+        
+        return null;
     }
 }
