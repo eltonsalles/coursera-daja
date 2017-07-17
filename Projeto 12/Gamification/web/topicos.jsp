@@ -3,10 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Falha</title>
+        <title>Tópicos</title>
     </head>
     <body>
-        <h1>Erro</h1>
-        <h3>${erro}</h3>
+        <h1>Tópicos</h1>
     </body>
 </html>

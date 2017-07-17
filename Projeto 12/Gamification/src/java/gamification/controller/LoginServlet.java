@@ -1,8 +1,7 @@
-package gamification;
+package gamification.controller;
 
+import gamification.auth.Autenticador;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,10 +26,16 @@ public class LoginServlet extends HttpServlet {
         try {
             String nomeUsuario = autenticador.autenticar(login, senha);
             request.setAttribute("nome", nomeUsuario);
-            request.getRequestDispatcher("sucesso.jsp").forward(request, response);
+            request.getRequestDispatcher("topicos.jsp").forward(request, response);
         } catch (Exception ex) {
             request.setAttribute("erro", ex.getMessage());
-            request.getRequestDispatcher("falha.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }

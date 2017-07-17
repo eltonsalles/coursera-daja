@@ -1,27 +1,18 @@
-package gamification;
+package gamification.auth;
 
+import gamification.utils.Conn;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Elton
  */
 public class Autenticador {
-    static {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Autenticador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
+
     public String autenticar(String login, String senha) throws Exception {
-        try (Connection c = DriverManager.getConnection("jdbc:postgresql://localhost/coursera", "postgres", "root")) {
+        try (Connection c = Conn.getConnection()) {
             String sql = "select nome from usuario where login = ? and senha = ?";
             
             PreparedStatement stmt = c.prepareStatement(sql);
