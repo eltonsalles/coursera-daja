@@ -1,5 +1,6 @@
 package gamification.auth;
 
+import gamification.model.Usuario;
 import gamification.utils.Conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,9 +12,9 @@ import java.sql.ResultSet;
  */
 public class Autenticador {
 
-    public String autenticar(String login, String senha) throws Exception {
+    public Usuario autenticar(String login, String senha) throws Exception {
         try (Connection c = Conn.getConnection()) {
-            String sql = "select nome from usuario where login = ? and senha = ?";
+            String sql = "select * from usuario where login = ? and senha = ?";
             
             PreparedStatement stmt = c.prepareStatement(sql);
             
@@ -23,7 +24,13 @@ public class Autenticador {
             ResultSet rs = stmt.executeQuery();
             
             if (rs.next()) {
-                return rs.getString("nome");
+                Usuario usuario = new Usuario(
+                        rs.getString("login"),
+                        rs.getString("email"),
+                        rs.getString("nome"),
+                        rs.getInt("pontos"));
+                
+                return usuario;
             } else {
                 throw new Exception("Não foi possível autenticar o usuário!");
             }
