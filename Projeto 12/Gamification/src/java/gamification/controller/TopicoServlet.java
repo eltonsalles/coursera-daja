@@ -1,6 +1,7 @@
 package gamification.controller;
 
 import gamification.dao.TopicoDao;
+import gamification.dao.UsuarioDao;
 import gamification.model.Topico;
 import gamification.model.Usuario;
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class TopicoServlet extends HttpServlet {
         try {
             // Faz a inserção no banco de dados
             TopicoDao.inserir(topico);
+            UsuarioDao.adicionarPontos(usuario.getLogin(), 10);
             
             // Redireciona para a jsp de topicos
             request.getRequestDispatcher("topicos.jsp").forward(request, response);

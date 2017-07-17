@@ -33,4 +33,18 @@ public class UsuarioDao {
             throw new RuntimeException("Não foi possível cadastrar o usuário.", e);
         }
     }
+    
+    public static void adicionarPontos(String login, int pontos) {
+        try (Connection c = Conn.getConnection()) {
+            String sql = "UPDATE usuario SET pontos = pontos + ? WHERE login = ?";
+
+            PreparedStatement stmt = c.prepareStatement(sql);
+            stmt.setInt(1, pontos);
+            stmt.setString(2, login);
+
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException("Não foi possível adicionar pontos ao usuário.", e);
+        }
+    }
 }
