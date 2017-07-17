@@ -18,11 +18,10 @@ public class Usuario {
         this.senha = senha;
     }
     
-    public Usuario(String login, String email, String nome, String senha, int pontos) {
+    public Usuario(String login, String email, String nome, int pontos) {
         this.login = login;
         this.email = email;
         this.nome = nome;
-        this.senha = senha;
         this.pontos = pontos;
     }
 

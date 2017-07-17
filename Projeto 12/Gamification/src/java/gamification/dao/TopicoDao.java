@@ -1,6 +1,6 @@
 package gamification.dao;
 
-import gamification.model.Usuario;
+import gamification.model.Topico;
 import gamification.utils.Conn;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,27 +10,26 @@ import java.sql.SQLException;
  *
  * @author Elton
  */
-public class UsuarioDao {
+public class TopicoDao {
     /**
-     * Faz a inserção de um novo usuário
+     * Faz a inserção de um novo tópico
      * 
-     * @param usuario
+     * @param topico
      * @throws SQLException 
      */
-    public static void inserir(Usuario usuario) throws SQLException {
+    public static void inserir(Topico topico) throws SQLException {
         try (Connection c = Conn.getConnection()) {
-            String sql = "insert into usuario (login, email, nome, senha, pontos) values (?, ?, ?, ?, 0)";
+            String sql = "insert into topico (titulo, conteudo, login) values (?, ?, ?)";
             
             PreparedStatement stmt = c.prepareStatement(sql);
             
-            stmt.setString(1, usuario.getLogin());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getNome());
-            stmt.setString(4, usuario.getSenha());
+            stmt.setString(1, topico.getTitulo());
+            stmt.setString(2, topico.getConteudo());
+            stmt.setString(3, topico.getUsuario().getLogin());
             
             stmt.executeUpdate();
         } catch (Exception e) {
-            throw new RuntimeException("Não foi possível cadastrar o usuário.", e);
+            throw new RuntimeException("Não foi possível cadastrar o tópico.", e);
         }
     }
 }
