@@ -1,6 +1,7 @@
 package gamification.controller;
 
 import gamification.auth.Autenticador;
+import gamification.model.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,10 +38,10 @@ public class LoginServlet extends HttpServlet {
         Autenticador autenticador = new Autenticador();
         try {
             // Faz a autenticação
-            String nomeUsuario = autenticador.autenticar(login, senha);
+            Usuario usuario = autenticador.autenticar(login, senha);
             
-            // Guarda o nome no request
-            request.setAttribute("nome", nomeUsuario);
+            // Guarda o usuario na session
+            request.getSession().setAttribute("usuario", usuario);
             
             // Redireciona para a jsp de tópicos
             request.getRequestDispatcher("topicos.jsp").forward(request, response);
