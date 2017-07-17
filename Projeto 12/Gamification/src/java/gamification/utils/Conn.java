@@ -16,6 +16,9 @@ public class Conn {
     private static String USER = "postgres";
     private static String PASS = "root";
     
+    /**
+     * Registra o driver na Garbage Collection
+     */
     static {
         try {
             Class.forName("org.postgresql.Driver");
@@ -24,6 +27,11 @@ public class Conn {
         }
     }
     
+    /**
+     * Retorna a conexão
+     * 
+     * @return 
+     */
     public static Connection getConnection() {
         try {
             return DriverManager.getConnection(HOST, USER, PASS);

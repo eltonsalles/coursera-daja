@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +7,10 @@
         <title>Cadastro</title>
     </head>
     <body>
+        <c:if test="${not empty erro}">
+            <h1>Erro</h1>
+            <h3>${erro}</h3>
+        </c:if>
         <form action="cadastro" method="post">
             <label>Login: </label>
             <input type="text" name="login" maxlength="255" required="" /><br>
