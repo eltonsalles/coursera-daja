@@ -15,9 +15,11 @@
         <form action="inserirTopico" method="post">
             <label>Título: </label>
             <input type="text" name="titulo" maxlength="255" required /><br>
-            <label>Conteúdo: </label>
+            <label>Conteúdo: </label><br>
             <textarea name="conteudo" cols="50" rows="5"></textarea><br>
             <input type="submit" value="Enviar" />
         </form>
+        <br>
+        <a href="topico">Voltar para tópicos</a>
     </body>
 </html>

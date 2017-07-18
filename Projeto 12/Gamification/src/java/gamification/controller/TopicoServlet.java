@@ -1,6 +1,8 @@
 package gamification.controller;
 
+import gamification.dao.ComentarioDao;
 import gamification.dao.TopicoDao;
+import gamification.model.Comentario;
 import gamification.model.Topico;
 import java.io.IOException;
 import java.util.List;
@@ -33,10 +35,12 @@ public class TopicoServlet extends HttpServlet {
             request.getRequestDispatcher("topicos.jsp").forward(request, response);
         }
 
-        Topico topico = TopicoDao.obterTopico(Integer.valueOf(idTopico));
+        Topico topico = TopicoDao.obterTopico(Integer.parseInt(idTopico));
+        List<Comentario> comentarios = ComentarioDao.recuperar(Integer.parseInt(idTopico));
 
         // Guarda o tópico
         request.setAttribute("topico", topico);
+        request.setAttribute("comentarios", comentarios);
 
         // Redireciona para a jsp exibir-topico
         request.getRequestDispatcher("exibir-topico.jsp").forward(request, response);

@@ -63,7 +63,7 @@ public class TopicoDao {
                 topicos.add(topico);
             }
         } catch (Exception e) {
-            throw new RuntimeException("Não foi possível cadastrar o tópico.", e);
+            throw new RuntimeException("Não foi possível recuperar os tópicos.", e);
         }
         
         return topicos;
