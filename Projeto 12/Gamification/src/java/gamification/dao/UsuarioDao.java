@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -83,5 +85,35 @@ public class UsuarioDao {
         }
         
         return null;
+    }
+    
+    /**
+     * Traz uma lista de usuários ordenado pelos maios pontos
+     * 
+     * @return 
+     */
+    public static List<Usuario> ranking() {
+        List<Usuario> lista = new ArrayList<>();
+        
+        try (Connection c = Conn.getConnection()) {
+            String sql = "select * from usuario order by pontos desc";
+
+            PreparedStatement stmt = c.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {                
+                Usuario usuario = new Usuario(
+                        rs.getString("login"), 
+                        rs.getString("email"), 
+                        rs.getString("nome"), 
+                        rs.getInt("pontos"));
+                
+                lista.add(usuario);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Não foi possível listar os usuários.", e);
+        }
+        
+        return lista;
     }
 }

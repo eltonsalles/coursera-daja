@@ -8,5 +8,7 @@
     <body>
         <h3>Título:  ${topico.titulo} - tópico criado por ${topico.usuario.nome}</h3>
         <p>Conteúdo: ${topico.conteudo}</p>
+        <br>
+        <a href="topico">Voltar para tópicos</a>
     </body>
 </html>
