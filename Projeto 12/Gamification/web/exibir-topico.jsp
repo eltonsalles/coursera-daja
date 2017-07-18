@@ -16,9 +16,10 @@
         </c:forEach>
         <br>
         <c:if test="${not empty erro}">
-            <h1>Erro</h1>
+            <h3>Erro</h3>
             <h3>${erro}</h3>
         </c:if>
+        <c:remove var="erro"></c:remove>
         <form action="comentario" method="post">
             <input type="hidden" name="id_topico" value="${topico.id}" />
             <label>Escreva seu comentário:</label><br>

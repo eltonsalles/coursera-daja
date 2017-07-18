@@ -32,9 +32,10 @@ public class ComentarioServlet extends HttpServlet {
         String comentario = request.getParameter("comentario");
         
         // Verifica se existem valores preenchidos
-        if (id == null || id.equals("") || comentario == null || comentario.equals("") || usuario == null) {
-            request.setAttribute("erro", "Preencha os campos com o valores validos.");
-            request.getRequestDispatcher("comentario.jsp").forward(request, response);
+        if (comentario == null || comentario.equals("") || usuario == null) {
+            request.getSession().setAttribute("erro", "Preencha os campos com o valores validos.");
+            response.sendRedirect("topico?id=" + id);
+            return;
         }
         
         // Criar um objeto do tipo tópico
