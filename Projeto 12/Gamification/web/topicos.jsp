@@ -24,5 +24,8 @@
                 </c:forEach>
             </tbody>
         </table>
+        <br>
+        <a href="inserirTopico">Inserir Novo Tópico</a><br>
+        <a href="ranking">Ranking</a>
     </body>
 </html>

@@ -48,7 +48,7 @@ public class InserirTopicoServlet extends HttpServlet {
             UsuarioDao.adicionarPontos(usuario.getLogin(), 10);
             
             // Redireciona para a jsp de topicos
-            request.getRequestDispatcher("topicos.jsp").forward(request, response);
+            response.sendRedirect("topico");
         } catch (SQLException ex) {
             // Guarda o erro no request
             request.setAttribute("erro", ex.getMessage());

@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("usuario", usuario);
             
             // Redireciona para a jsp de tópicos
-            request.getRequestDispatcher("topicos.jsp").forward(request, response);
+            response.sendRedirect("topico");
         } catch (Exception ex) {
             // Guarda o erro no request
             request.setAttribute("erro", ex.getMessage());

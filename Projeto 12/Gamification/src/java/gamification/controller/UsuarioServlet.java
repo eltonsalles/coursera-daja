@@ -53,7 +53,7 @@ public class UsuarioServlet extends HttpServlet {
             UsuarioDao.inserir(usuario);
             
             // Redireciona para a jsp de login para que o usuário possa logar
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            response.sendRedirect("login");
         } catch (SQLException ex) {
             // Guarda o erro no request
             request.setAttribute("erro", ex.getMessage());

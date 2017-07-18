@@ -79,7 +79,7 @@ public class UsuarioDao {
                 return usuario;
             }
         } catch (Exception e) {
-            throw new RuntimeException("Não foi possível adicionar pontos ao usuário.", e);
+            throw new RuntimeException("Não foi possível encontrar o usuário.", e);
         }
         
         return null;
