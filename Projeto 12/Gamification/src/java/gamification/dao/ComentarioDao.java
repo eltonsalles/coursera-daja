@@ -41,23 +41,23 @@ public class ComentarioDao {
     /**
      * Recupera a lista de comentários
      * 
-     * @param id
+     * @param idTopico
      * @return 
      */
-    public static List<Comentario> recuperar(int id) {
+    public static List<Comentario> recuperar(int idTopico) {
         List<Comentario> comentarios = new ArrayList<>();
         
         try (Connection c = Conn.getConnection()) {
-            String sql = "select * from comentario where id_topico = ?";
+            String sql = "select * from comentario where id_topico = ? order by id_comentario";
             
             PreparedStatement stmt = c.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setInt(1, idTopico);
             
             ResultSet rs = stmt.executeQuery();
             
             while (rs.next()) {
                 Usuario usuario = UsuarioDao.obterUsuario(rs.getString("login"));
-                Topico topico = TopicoDao.obterTopico(id);
+                Topico topico = TopicoDao.obterTopico(idTopico);
                 
                 Comentario comentario = new Comentario(rs.getString("comentario"), usuario, topico);
                 
