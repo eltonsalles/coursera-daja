@@ -1,11 +1,8 @@
 package gamification.utils;
 
-import gamification.auth.Autenticador;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +20,7 @@ public class Conn {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Autenticador.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException("Erro no registro do driver.", ex);
         }
     }
     

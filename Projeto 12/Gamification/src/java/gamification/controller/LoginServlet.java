@@ -1,6 +1,6 @@
 package gamification.controller;
 
-import gamification.auth.Autenticador;
+import gamification.dao.UsuarioDao;
 import gamification.model.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -35,10 +35,9 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
         
-        Autenticador autenticador = new Autenticador();
         try {
             // Faz a autenticação
-            Usuario usuario = autenticador.autenticar(login, senha);
+            Usuario usuario = UsuarioDao.autenticar(login, senha);
             
             // Guarda o usuario na session
             request.getSession().setAttribute("usuario", usuario);

@@ -14,6 +14,40 @@ import java.util.List;
  * @author Elton
  */
 public class UsuarioDao {
+    
+    /**
+     * Faz a autenticação do usuário
+     * 
+     * @param login
+     * @param senha
+     * @return
+     * @throws Exception 
+     */
+    public static Usuario autenticar(String login, String senha) throws Exception {
+        try (Connection c = Conn.getConnection()) {
+            String sql = "select * from usuario where login = ? and senha = ?";
+            
+            PreparedStatement stmt = c.prepareStatement(sql);
+            
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                Usuario usuario = new Usuario(
+                        rs.getString("login"),
+                        rs.getString("email"),
+                        rs.getString("nome"),
+                        rs.getInt("pontos"));
+                
+                return usuario;
+            } else {
+                throw new Exception("Não foi possível autenticar o usuário!");
+            }
+        }
+    }
+    
     /**
      * Faz a inserção de um novo usuário
      * 
