@@ -46,7 +46,7 @@ public class TopicoDao {
         List<Topico> topicos = new ArrayList<>();
         
         try (Connection c = Conn.getConnection()) {
-            String sql = "select * from topico";
+            String sql = "select * from topico order by id_topico";
             
             PreparedStatement stmt = c.prepareStatement(sql);
             
