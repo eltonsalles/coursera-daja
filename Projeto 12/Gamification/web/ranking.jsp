@@ -1,9 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
         <title>Ranking</title>
     </head>
     <body>
@@ -27,6 +26,6 @@
             </tbody>
         </table>
         <br>
-        <a href="topico">Voltar para tÃ³picos</a>
+        <a href="topico">Voltar para tópicos</a>
     </body>
 </html>

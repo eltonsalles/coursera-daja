@@ -1,17 +1,16 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>TÃ³picos</title>
+        <meta charset="UTF-8">
+        <title>Tópicos</title>
     </head>
     <body>
-        <h1>TÃ³picos</h1>
+        <h1>Tópicos</h1>
         <table>
             <thead>
                 <tr>
-                    <td>TÃ­tulo</td>
+                    <td>Título</td>
                     <td>Criador</td>
                 </tr>
             </thead>
@@ -25,7 +24,7 @@
             </tbody>
         </table>
         <br>
-        <a href="inserirTopico">Inserir Novo TÃ³pico</a><br>
+        <a href="inserirTopico">Inserir Novo Tópico</a><br>
         <a href="ranking">Ranking</a>
     </body>
 </html>

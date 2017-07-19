@@ -1,16 +1,15 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>T贸pico</title>
+        <meta charset="UTF-8">
+        <title>T髉ico</title>
     </head>
     <body>
-        <h1>T贸pico</h1>
-        <h3>T铆tulo:  ${topico.titulo} - t贸pico criado por ${topico.usuario.nome}</h3>
-        <p>Conte煤do: ${topico.conteudo}</p>
-        <h3>Coment谩rios</h3>
+        <h1>T髉ico</h1>
+        <h3>T韙ulo:  ${topico.titulo} - t髉ico criado por ${topico.usuario.nome}</h3>
+        <p>Conte鷇o: ${topico.conteudo}</p>
+        <h3>Coment醨ios</h3>
         <c:forEach items="${comentarios}" var="comentario">
             <p><strong>${comentario.usuario.nome}: </strong>${comentario.comentario}</p>
         </c:forEach>
@@ -22,11 +21,11 @@
         <c:remove var="erro"></c:remove>
         <form action="comentario" method="post">
             <input type="hidden" name="id_topico" value="${topico.id}" />
-            <label>Escreva seu coment谩rio:</label><br>
+            <label>Escreva seu coment醨io:</label><br>
             <textarea name="comentario" cols="50" rows="5"></textarea><br>
-            <input type="submit" value="Adicionar Coment谩rio" />
+            <input type="submit" value="Adicionar Coment醨io" />
         </form>
         <br>
-        <a href="topico">Voltar para t贸picos</a>
+        <a href="topico">Voltar para t髉icos</a>
     </body>
 </html>
